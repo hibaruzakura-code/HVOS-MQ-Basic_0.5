@@ -1,9 +1,45 @@
 @echo off
 chcp 65001
 echo ==========================================
-echo  HVOSã«å¿…è¦ãªéƒ¨å“ã‚’è‡ªå‹•ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¾ã™
+echo  HVOS (MetaQuest”Å) ‚É•K—v‚È•”•i‚ðŽ©“®‚ÅƒCƒ“ƒXƒg[ƒ‹‚µ‚Ü‚·
 echo ==========================================
-pip install flask pyautogui keyboard pygetwindow pillow google-genai
+
+:: ‡@ ’Êí‚Ì pip ‚ðŽŽ‚·
+pip --version >nul 2>&1
+if %errorlevel% == 0 (
+    pip install flask pyautogui keyboard pygetwindow pillow google-genai
+    goto SUCCESS
+)
+
+:: ‡A python -m pip ‚ðŽŽ‚·iPATH–¢”½‰f‘Îôj
+python -m pip --version >nul 2>&1
+if %errorlevel% == 0 (
+    python -m pip install flask pyautogui keyboard pygetwindow pillow google-genai
+    goto SUCCESS
+)
+
+:: ‡B py -m pip ‚ðŽŽ‚·iWindows•W€ƒ‰ƒ“ƒ`ƒƒ[j
+py -m pip --version >nul 2>&1
+if %errorlevel% == 0 (
+    py -m pip install flask pyautogui keyboard pygetwindow pillow google-genai
+    goto SUCCESS
+)
+
+:ERROR
 echo.
-echo æº–å‚™ãŒå®Œäº†ã—ã¾ã—ãŸï¼ã“ã®ç”»é¢ã¯é–‰ã˜ã¦å¤§ä¸ˆå¤«ã§ã™ã€‚
+echo yƒGƒ‰[zPython ‚Ü‚½‚Í pip ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B
+echo.
+echo ¡ ‘ÎôF
+echo 1. ƒpƒ\ƒRƒ“‚ðˆê“xuÄ‹N“®v‚µ‚Ä‚©‚çA‚à‚¤ˆê“x‚±‚Ìƒtƒ@ƒCƒ‹‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
+echo 2. ‚»‚ê‚Å‚àƒ_ƒ‚Èê‡‚ÍAPython‚ÌƒCƒ“ƒXƒg[ƒ‹Žž‚ÉuAdd python.exe to PATHv‚É
+echo    ƒ`ƒFƒbƒN‚ð“ü‚ê‚½‚©Šm”F‚µAPython‚ðÄƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B
+echo.
+pause
+exit
+
+:SUCCESS
+echo.
+echo ------------------------------------------
+echo €”õ‚ªŠ®—¹‚µ‚Ü‚µ‚½I‚±‚Ì‰æ–Ê‚Í•Â‚¶‚Ä‘åä•v‚Å‚·B
+echo ------------------------------------------
 pause
